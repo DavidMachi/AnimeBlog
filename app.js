@@ -10,11 +10,7 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
-mongoose
-  .connect("mongodb+srv://david:david98@nodetuts.bthav.mongodb.net/nodetuts", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
@@ -138,6 +134,5 @@ app.use((req, res) => {
   res.status(404).render("404", { title: "404 Page Not Found" });
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
