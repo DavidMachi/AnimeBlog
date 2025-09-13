@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+    body{
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-family: 'Noto Serif', serif;
+      max-width: 1200px;
+    }
+    p, h1, h2, h3, a, ul{
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: #222;
+    }
+
+    /* nav & footer styles */
+    nav{
+      background-image: url(saturn.jpg) ;
+      background-size: cover;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      text-transform: uppercase;
+      border-radius: 5px;
+    }
+    nav ul{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    nav li{
+      list-style-type: none;
+      margin-left: 20px;
+    }
+    nav h1{
+      padding-left: 20px;
+      font-size: 3em;
+      color: rgb(255, 255, 255);
+    }
+    nav p{
+      padding-left: 20px;
+      color: rgb(255, 255, 255);
+      font-weight: 300;
+    }
+    nav a{
+      padding-right: 20px;
+      color: rgb(255, 255, 255);
+      font-weight: 300;
+    }
+    nav a:hover{
+      color: #000000;
+    }
+    footer{
+      color: #777;
+      text-align: center;
+      margin: 80px auto 20px;
+    }
+    h2{
+      margin-bottom: 40px;
+    }
+    h3{
+      text-transform: capitalize;
+      margin-bottom: 8px;
+      font-size: 25px;
+    }
+    .content{
+      margin-left: 20px;
+    }
+
+    /* index styles */
+    .blogs a{
+      display: block;
+      margin: 40px 0;
+      padding-left: 30px;
+      border-left: 6px solid rgba(47, 20, 220, 0.758);
+    }
+    .blogs a:hover h3{
+      color: rgba(47, 20, 220, 0.758);
+    }
+
+    /* details styles */
+    .details{
+      position: relative;
+    }
+    .delete{
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+      padding: 8px;
+    }
+    .delete:hover{
+      cursor: pointer;
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+    }
+
+    /* create styles */
+    .create-blog form{
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .create-blog input,
+    .create-blog textarea{
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+    .create-blog label{
+      display: block;
+      margin-top: 24px;
+    }
+    textarea{
+      height: 120px;
+    }
+    .create-blog button{
+      margin-top: 20px;
+      background: crimson;
+      color: white;
+      padding: 6px;
+      border: 0;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+
+
+
+
+
+
+
+    .body-description{
+      padding-bottom: 25px;
+    }
+
+
+
+
+
+    .single {
+      position: relative;
+      display: block;
+      /* Riserva uno spazio a destra almeno pari alla larghezza dell'immagine + un po' di margine */
+      padding-right: 420px;
+    }
+    
+    .hover-image {
+      position: absolute;
+      top: 50%;               /* Centra verticalmente rispetto al contenitore */
+      right: 0;               /* Allinea al bordo destro del contenitore */
+      width: 407.6px;         /* Larghezza esatta */
+      height: 110.15px;       /* Altezza esatta */
+      transform: translateX(20px) translateY(-50%);  /* Parte spostata leggermente a destra */
+      opacity: 0;             /* Inizialmente invisibile */
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      z-index: 10;
+    }
+    
+    .single:hover .hover-image {
+      opacity: 1;
+      transform: translateX(0) translateY(-50%);
+    }
+    
+
+
+
+
+
+
+
+    /* Contenitore principale a due colonne */
+.page-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Spazio tra le colonne */
+  margin: 20px;
+}
+
+/* Colonna sinistra: occuperà la maggior parte dello spazio */
+.left-content {
+  flex: 2;
+}
+
+/* Colonna destra: area per i commenti */
+.right-content {
+  flex: 1;
+  background-color: #f9f9f9; /* Sfondo chiaro per evidenziare i commenti */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Stili per il titolo dei commenti */
+.right-content h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+/* Stili per la lista dei commenti */
+.right-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.right-content li {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Stili per il form di aggiunta commento */
+.add-comment textarea {
+  width: 100%;
+  min-height: 80px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.add-comment button {
+  padding: 8px 12px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.add-comment button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.vote-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.vote-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Il contenitore per le stelle usa il reverse della direzione per permettere di selezionare correttamente */
+.vote-stars {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  font-size: 2em;
+}
+
+.vote-stars input {
+  display: none;
+}
+
+.vote-stars label {
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0 5px;
+}
+
+/* Quando si passa con il mouse o si seleziona una stella, cambia colore */
+.vote-stars input:checked ~ label,
+.vote-stars label:hover,
+.vote-stars label:hover ~ label {
+  color: #f5b301;
+}
+
+.vote-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.vote-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Centra il form */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+/* Box del login */
+.login-box {
+  width: 350px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input */
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Bottone */
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #3897f0;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.login-box button:hover {
+  background-color: #1877f2;
+}
+
+
+
+
+
+
+
+.about-us-image img {
+  width: 100%; /* L'immagine occuperà tutta la larghezza disponibile */
+  height: auto; /* Mantieni le proporzioni dell'immagine */
+  display: block; /* Assicura che l'immagine non abbia spazi extra intorno */
+  margin-top: 20px; /* Distanza dalla descrizione sopra */
+}

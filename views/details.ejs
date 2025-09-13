@@ -1,0 +1,99 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        <%- include("./partials/nav.ejs") %>
+
+            <!-- Contenitore principale a due colonne -->
+            <div class="page-wrapper">
+
+                <!-- Colonna sinistra: dettagli, votazione, ecc. -->
+                <div class="left-content">
+                    <div class="details content">
+                        <h2>
+                            <%= blog.title %>
+                        </h2>
+                        <div class="content">
+                            <p class="body-description">
+                                <%= blog.body %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Sezione votazione -->
+                    <% if (user) { %>
+                        <% if (blog.voters && blog.voters.includes(user)) { %>
+                            <p>Hai già votato questo anime.</p>
+                            <% } else { %>
+                                <div class="vote-container">
+                                    <form action="/blogs/<%= blog._id %>/add-vote" method="POST">
+                                        <span class="vote-label">Rate this anime:</span>
+                                        <div class="vote-stars">
+                                            <input type="radio" id="star5" name="vote" value="5" required>
+                                            <label for="star5" title="5 stelle">★</label>
+
+                                            <input type="radio" id="star4" name="vote" value="4" required>
+                                            <label for="star4" title="4 stelle">★</label>
+
+                                            <input type="radio" id="star3" name="vote" value="3" required>
+                                            <label for="star3" title="3 stelle">★</label>
+
+                                            <input type="radio" id="star2" name="vote" value="2" required>
+                                            <label for="star2" title="2 stelle">★</label>
+
+                                            <input type="radio" id="star1" name="vote" value="1" required>
+                                            <label for="star1" title="1 stella">★</label>
+                                        </div>
+                                        <button type="submit" class="vote-button">Vota</button>
+                                    </form>
+                                </div>
+                                <% } %>
+                                    <% } else { %>
+                                        <p class="login-message">Effettua il <a href="/login">login</a> per votare.</p>
+                                        <% } %>
+
+                                            <% if (blog.rating) { %>
+                                                <p>Media dei voti: <%= blog.rating.toFixed(1) %>
+                                                </p>
+                                                <% } else { %>
+                                                    <p>No votes yet</p>
+                                                    <% } %>
+                </div>
+
+                <!-- Colonna destra: commenti -->
+                <div class="right-content">
+                    <div class="comments">
+                        <h3>Comments:</h3>
+                        <ul>
+                            <% blog.comments.forEach(comment=> { %>
+                                <li>
+                                    <strong>
+                                        <%= comment.username %> (<%= new Date(comment.createdAt).toLocaleDateString() %>
+                                                ):
+                                    </strong>
+                                    <%= comment.comment %>
+                                </li>
+                                <% }) %>
+                        </ul>
+                    </div>
+
+                    <!-- Form per commentare: visualizzato solo se l'utente è loggato -->
+                    <% if (user) { %>
+                        <div class="add-comment">
+                            <h3>Leave a Comment:</h3>
+                            <form action="/blogs/<%= blog._id %>/comment" method="POST">
+                                <textarea name="comment" required></textarea>
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div>
+                        <% } else { %>
+                            <p class="login-message">Effettua il <a href="/login">login</a> per commentare.</p>
+                            <% } %>
+                </div>
+
+            </div>
+
+            <%- include("./partials/footer.ejs") %>
+    </body>
+
+</html>
