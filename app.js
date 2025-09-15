@@ -7,8 +7,18 @@ const userController = require("./controllers/userController");
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const cookieParser = require("cookie-parser");
+require("dotenv").config();
+
 
 const app = express();
+
+const cors = require("cors");
+
+app.use(cors({
+  origin: "https://mio-portfolio-ruddy.vercel.app/", // il dominio del tuo portfolio
+  credentials: true, // consente l'invio di cookie
+}));
+
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))

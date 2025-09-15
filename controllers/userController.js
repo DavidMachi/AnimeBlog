@@ -23,7 +23,8 @@ const login_post = async (req, res) => {
     // Imposta un cookie con il valore dell'email (o un identificatore univoco)
     res.cookie("user", user.username, {
       httpOnly: true,
-      sameSite: "strict",
+      secure: true, 
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000, // 1 giorno
     });
     res.redirect("/"); // Reindirizza alla homepage dopo il login
