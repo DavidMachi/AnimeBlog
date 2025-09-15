@@ -34,9 +34,12 @@ const login_post = async (req, res) => {
   }
 };
 
-// Funzione per il logout: elimina il cookie
 const logout_get = (req, res) => {
-  res.clearCookie("user");
+  res.clearCookie("user", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None"
+  });
   res.redirect("/login"); // Dopo il logout, torna alla pagina di login
 };
 
